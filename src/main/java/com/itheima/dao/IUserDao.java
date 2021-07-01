@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * mybatis中正对crud 的四个注解
  */
+@CacheNamespace(blocking = true)//开启了二级缓存
 public interface IUserDao {
 
     /**
