@@ -16,7 +16,7 @@ public interface IUserDao {
      * @return
      */
     @Select("select * from user")
-    @Results(value = {
+    @Results(id = "userMap", value = {
             @Result(id = true, column = "id", property = "userId"),
             @Result(column = "username", property = "userName"),
             @Result(column = "address", property = "userAddress"),
@@ -32,6 +32,7 @@ public interface IUserDao {
      * @return
      */
     @Select("select * from user where id = #{id}")
+    @ResultMap("userMap")
     User findById(Integer id);
 
     /**
