@@ -23,4 +23,13 @@ public interface IAccountDao {
             @Result(property = "user", column = "uid", one = @One(select = "com.itheima.dao.IUserDao.findById", fetchType = FetchType.EAGER)),
     })
     List<Account> findAll();
+
+    /**
+     * 更具用户id查询账户信息
+     * @param uid
+     * @return
+     */
+    @Select("select * from account where uid = #{userId}")
+    List<Account> findAccountByUid(Integer uid);
+
 }

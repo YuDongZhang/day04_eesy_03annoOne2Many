@@ -2,6 +2,7 @@ package com.itheima.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -10,6 +11,16 @@ public class User implements Serializable {
     private String userAddress;
     private String userSex;
     private Date userBirthday;
+    //一对多关系映射
+    private List<Account> accounts;
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public Integer getUserId() {
         return userId;

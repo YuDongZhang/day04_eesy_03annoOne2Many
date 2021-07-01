@@ -2,6 +2,7 @@ package com.itheima.dao;
 
 import com.itheima.domain.User;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import java.util.List;
 
@@ -22,6 +23,9 @@ public interface IUserDao {
             @Result(column = "address", property = "userAddress"),
             @Result(column = "sex", property = "userSex"),
             @Result(column = "birthday", property = "userBirthday"),
+            @Result(column = "id", property = "accounts",
+                    many = @Many(select = "com.itheima.dao.IAccountDao.findAccountByUid",
+                            fetchType = FetchType.LAZY))
     })
     List<User> findAll();
 
