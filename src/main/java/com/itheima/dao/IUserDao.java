@@ -1,9 +1,7 @@
 package com.itheima.dao;
 
 import com.itheima.domain.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -18,6 +16,13 @@ public interface IUserDao {
      * @return
      */
     @Select("select * from user")
+    @Results(value = {
+            @Result(id = true, column = "id", property = "userId"),
+            @Result(column = "username", property = "userName"),
+            @Result(column = "address", property = "userAddress"),
+            @Result(column = "sex", property = "userSex"),
+            @Result(column = "birthday", property = "userBirthday"),
+    })
     List<User> findAll();
 
     /**
